@@ -49,6 +49,58 @@ def fetch_full_text(url: str) -> str:
         return ""
 
 
+def fetch_unsplash_image(keywords: str) -> str:
+    """Search Unsplash for a high-quality landscape image matching the article topic."""
+    access_key = os.environ.get("UNSPLASH_ACCESS_KEY", "")
+    if not access_key:
+        return ""
+    try:
+        resp = requests.get(
+            "https://api.unsplash.com/search/photos",
+            params={"query": keywords, "orientation": "landscape", "per_page": 5, "order_by": "relevant"},
+            headers={"Authorization": f"Client-ID {access_key}"},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        results = resp.json().get("results", [])
+        if results:
+            return results[0]["urls"]["regular"]
+    except Exception as e:
+        print(f"  Unsplash error: {e}")
+    return ""
+
+
+def build_image_keywords(article: dict) -> str:
+    """Extract relevant search keywords from the article for Unsplash."""
+    category = article.get("topic_category", "")
+    title = article.get("title", "")
+
+    keyword_map = {
+        "PE/M&A":            "business acquisition deal corporate office",
+        "Valuation":         "business growth chart meeting",
+        "Multi-Unit":        "franchise storefront retail business",
+        "Fitness":           "fitness gym modern interior",
+        "Food/QSR":          "restaurant storefront food service",
+        "Home Services":     "home services professional contractor",
+        "Children's":        "children education learning",
+        "Senior Care":       "senior care professional",
+        "General Franchise": "franchise business professional storefront",
+    }
+    base = keyword_map.get(category, "franchise business professional")
+
+    known_brands = [
+        "McDonald", "Subway", "Chick-fil-A", "Domino", "Pizza Hut",
+        "Anytime Fitness", "Orangetheory", "Great Clips", "Sport Clips",
+        "7-Eleven", "UPS Store", "Kumon",
+    ]
+    for brand in known_brands:
+        if brand.lower() in title.lower():
+            base = f"{brand} franchise storefront exterior"
+            break
+
+    return base
+
+
 def is_headshot_url(url: str) -> bool:
     """Return True if the URL looks like a headshot/avatar/author photo."""
     headshot_signals = [

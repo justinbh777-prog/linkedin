@@ -5,7 +5,7 @@ Returns the top-scoring article with full text and hero image attached.
 import json
 import os
 import re
-from pipeline.scrape_articles import fetch_full_text, fetch_hero_image
+from pipeline.scrape_articles import fetch_full_text, fetch_unsplash_image, build_image_keywords
 
 
 def load_scoring_config():
@@ -57,14 +57,13 @@ def select_top_article(articles: list[dict]) -> dict | None:
     print("  Fetching full article text...")
     top["full_text"] = fetch_full_text(top["url"])
 
-    print("  Fetching hero image...")
-    top["hero_image_url"] = fetch_hero_image(top["url"])
+    print("  Fetching topic-relevant image from Unsplash...")
+    top["topic_category"] = categorize(top)  # categorize first so keywords are accurate
+    keywords = build_image_keywords(top)
+    print(f"  Image search: '{keywords}'")
+    top["hero_image_url"] = fetch_unsplash_image(keywords)
 
     top["score"] = top_score
-
-    # Determine topic category
-    top["topic_category"] = categorize(top)
-
     return top
 
 
