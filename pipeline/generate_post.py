@@ -78,7 +78,7 @@ POST STRUCTURE (follow exactly):
 STYLE RULES:
 - No fluff. No motivational language. No guru phrases.
 - Data-driven, analytical, operator-focused.
-- Use em-dashes for inline data pivots.
+- Never use em-dashes. Use a regular hyphen or restructure the sentence instead.
 - Max 2 sentences per paragraph. Aggressive white space.
 - Use franchise vocabulary: unit economics, royalty stream, EBITDA, acquisition multiple, enterprise value, platform acquisition, roll-up, consolidation, same-store sales, SBA financeability.
 - Total length: 180-250 words for standard posts, up to 400 for complex M&A stories.

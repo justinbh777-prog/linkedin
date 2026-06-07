@@ -13,7 +13,7 @@ Post as a trusted insider, not a commentator. Write like someone who has lived t
 
 - Open with a financial or strategic hook — dollar amount, unit count, or contrarian observation
 - Short paragraphs. 1-2 sentences max. Heavy white space.
-- Em-dash pivots for inline data without slowing momentum
+- No em-dashes. Ever. Use hyphens or rewrite the sentence.
 - Three-pillar conclusions every post
 - End with broker perspective CTA
 
