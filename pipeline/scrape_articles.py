@@ -49,17 +49,86 @@ def fetch_full_text(url: str) -> str:
         return ""
 
 
+def is_headshot_url(url: str) -> bool:
+    """Return True if the URL looks like a headshot/avatar/author photo."""
+    headshot_signals = [
+        "avatar", "author", "headshot", "profile", "staff", "reporter",
+        "journalist", "byline", "mugshot", "person", "people",
+        # Small square resize params are a dead giveaway (CMS thumbnail of a person)
+        "resize=200%2C200", "resize=200,200",
+        "resize=100%2C100", "resize=150%2C150",
+        "crop=518%2C518", "crop=200%2C200",
+    ]
+    url_lower = url.lower()
+    return any(signal in url_lower for signal in headshot_signals)
+
+
 def fetch_hero_image(url: str) -> str:
-    """Return the og:image URL for an article page."""
+    """
+    Return the best landscape/editorial image URL for an article page.
+    Skips headshots, author photos, and tiny thumbnails.
+    Prefers og:image (usually the article's main editorial image),
+    but strips CMS resize parameters that indicate a thumbnail crop.
+    Falls back to the largest landscape img tag found in the article body.
+    """
     try:
         resp = requests.get(url, headers=HEADERS, timeout=10)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
+
+        # --- Try og:image first (best source for editorial images) ---
         og = soup.find("meta", property="og:image")
         if og and og.get("content"):
-            return og["content"]
-        img = soup.find("article img") if soup.find("article") else soup.find("img")
-        return img["src"] if img and img.get("src") else ""
+            og_url = og["content"]
+            if not is_headshot_url(og_url):
+                # Strip CMS resize/crop query params to get full-size image
+                clean = og_url.split("?")[0]
+                return clean
+
+        # --- Fall back: scan article body for landscape images ---
+        article = soup.find("article") or soup.find(class_=lambda c: c and "article-body" in (c if isinstance(c, str) else " ".join(c)).lower())
+        search_area = article if article else soup
+
+        best_url = ""
+        best_score = 0
+
+        for img in search_area.find_all("img"):
+            src = img.get("src") or img.get("data-src") or ""
+            if not src or src.startswith("data:"):
+                continue
+            if is_headshot_url(src):
+                continue
+            # Skip tiny icons
+            skip_keywords = ["icon", "logo", "sprite", "pixel", "tracking", "ad", "banner"]
+            if any(k in src.lower() for k in skip_keywords):
+                continue
+
+            # Score by width attribute (prefer wide images)
+            width = 0
+            try:
+                width = int(img.get("width", 0))
+            except (ValueError, TypeError):
+                pass
+
+            # Boost score for images with "large", "full", "hero", "featured" in URL
+            url_boost = sum(1 for k in ["large", "full", "hero", "featured", "editorial"] if k in src.lower())
+            score = width + (url_boost * 300)
+
+            if score > best_score:
+                best_score = score
+                best_url = src.split("?")[0]  # strip resize params
+
+        if best_url:
+            # Make absolute URL if relative
+            if best_url.startswith("//"):
+                best_url = "https:" + best_url
+            elif best_url.startswith("/"):
+                from urllib.parse import urlparse
+                parsed = urlparse(url)
+                best_url = f"{parsed.scheme}://{parsed.netloc}{best_url}"
+            return best_url
+
+        return ""
     except Exception:
         return ""
 
