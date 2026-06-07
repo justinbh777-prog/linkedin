@@ -1,0 +1,29 @@
+name: Daily Metrics Scraper
+
+on:
+  schedule:
+    - cron: "0 18 * * 2-6"  # 2pm EST next day (6pm UTC) — gives posts 24h to accumulate engagement
+  workflow_dispatch:
+
+jobs:
+  scrape-metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run metrics scraper
+        env:
+          APIFY_API_KEY: ${{ secrets.APIFY_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python -m pipeline.apify_scraper

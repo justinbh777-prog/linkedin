@@ -1,0 +1,85 @@
+{
+  "rss_feeds": [
+    {
+      "name": "Franchise Times",
+      "url": "https://www.franchisetimes.com/rss.xml",
+      "priority_boost": 2
+    },
+    {
+      "name": "Franchise Wire",
+      "url": "https://www.franchisewire.com/feed/",
+      "priority_boost": 1
+    },
+    {
+      "name": "Restaurant Business",
+      "url": "https://restaurantbusinessonline.com/feed",
+      "priority_boost": 1
+    },
+    {
+      "name": "QSR Magazine",
+      "url": "https://www.qsrmagazine.com/feed",
+      "priority_boost": 1
+    },
+    {
+      "name": "Franchise Update",
+      "url": "https://www.franchiseupdate.com/feed/",
+      "priority_boost": 1
+    },
+    {
+      "name": "Nation's Restaurant News",
+      "url": "https://www.nrn.com/rss.xml",
+      "priority_boost": 1
+    },
+    {
+      "name": "Franchise Chatter",
+      "url": "https://www.franchisechatter.com/feed/",
+      "priority_boost": 1
+    }
+  ],
+  "scrape_urls": [
+    {
+      "name": "Franchise Times News",
+      "url": "https://www.franchisetimes.com/franchise_news/",
+      "priority_boost": 2
+    },
+    {
+      "name": "Franchise Times M&A",
+      "url": "https://www.franchisetimes.com/franchise_mergers_and_acquisitions/",
+      "priority_boost": 3
+    }
+  ],
+  "scoring": {
+    "highest_priority": {
+      "keywords": [
+        "acquisition", "acquired", "acquires", "merger", "merges",
+        "private equity", "PE firm", "investment firm", "buyout",
+        "exit", "sold", "sells franchise", "franchise sale",
+        "consolidation", "consolidates", "roll-up", "rollup",
+        "IPO", "recapitalization", "recap", "platform acquisition",
+        "KKR", "Blackstone", "Roark", "Warburg", "Franchise Group",
+        "8 figures", "7 figures", "million", "billion",
+        "EBITDA", "multiple", "valuation"
+      ],
+      "score": 10
+    },
+    "medium_priority": {
+      "keywords": [
+        "multi-unit", "multi unit", "area developer", "franchisee",
+        "unit economics", "Item 19", "FDD", "franchise disclosure",
+        "same-store sales", "AUV", "average unit volume",
+        "expansion", "growth", "new markets", "development agreement",
+        "SBA", "financing", "lending", "loan",
+        "profitability", "revenue", "royalty"
+      ],
+      "score": 5
+    },
+    "lower_priority": {
+      "keywords": [
+        "new location", "grand opening", "menu launch", "rebrand",
+        "award", "recognition", "charity", "community",
+        "hiring", "new hire", "executive"
+      ],
+      "score": 2
+    }
+  }
+}
