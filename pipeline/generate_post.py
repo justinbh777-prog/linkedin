@@ -82,12 +82,13 @@ POST STRUCTURE (follow exactly):
 ---
 
 STYLE RULES:
-- No fluff. No motivational language. No guru phrases.
-- Never use em-dashes. Use a regular hyphen or rewrite the sentence.
-- Max 2 sentences per paragraph. Heavy white space.
-- Vocabulary: unit economics, SBA financing, seller's discretionary earnings, acquisition multiple, transferability, recast earnings, same-store sales, franchisee profitability.
-- Length: 180-250 words standard, up to 350 for complex topics.
+- Write like you are texting a smart friend who owns a franchise. Simple words. Short sentences.
+- No jargon unless you immediately explain it in plain English.
+- Never use em-dashes. Use a hyphen or rewrite the sentence.
+- One idea per paragraph. Two sentences max. Lots of white space.
+- Length: 150-200 words total. Tight and punchy. Cut anything that does not need to be there.
 - No hashtags. No emojis. Do not start with "I".
+- A 10th grader should be able to read this without stopping.
 
 Write ONLY the post text. No preamble, no explanation, no title.
 """
