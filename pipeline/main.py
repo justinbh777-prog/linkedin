@@ -31,7 +31,6 @@ def save_markdown(article: dict, posts: dict, date_str: str):
 **URL:** {article['url']}
 **Category:** {article['topic_category']}
 **Relevance Score:** {article['score']}
-**Hero Image:** {article.get('hero_image_url', 'N/A')}
 
 ---
 
@@ -60,8 +59,7 @@ def save_markdown(article: dict, posts: dict, date_str: str):
 1. Pick Variant A or B
 2. Copy the post text
 3. Go to LinkedIn and create a new post
-4. Attach the hero image (URL above — save image first)
-5. Post at 10:00 AM EST for best reach
+4. Post at 10:00 AM EST for best reach
 6. After posting, paste the post URL into the Google Sheet row for {date_str}
 7. Update Status column to POSTED
 
