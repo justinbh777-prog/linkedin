@@ -150,6 +150,34 @@ def read_recent_posts(days: int = 30) -> list[dict]:
     return records
 
 
+def append_personal_post(personal: dict, date_str: str):
+    """Write a personal post row to the Posts tab."""
+    client = get_client()
+    sheet_id = os.environ.get("GOOGLE_SHEET_ID")
+    ws = get_or_create_sheet(client, sheet_id, TAB_POSTS)
+    ensure_headers(ws, SHEET_HEADERS)
+
+    row = [
+        date_str,
+        "8:00 AM",           # Personal posts go up earlier
+        personal.get("topic", "Personal Post"),
+        "",                  # No article URL
+        "Personal",
+        "Personal",
+        "",                  # No score
+        "Personal",
+        personal.get("post", ""),
+        "",                  # No variant B
+        "",
+        "",
+        "PENDING",
+        "", "", "", "", "", "", "", "",
+    ]
+
+    ws.append_row(row, value_input_option="USER_ENTERED")
+    print(f"  Personal post row appended to Google Sheet")
+
+
 def log_strategy_update(summary: str, date_str: str):
     """Log each weekly strategy update."""
     client = get_client()
