@@ -29,11 +29,17 @@ def build_prompt(article: dict, hook_type: str, strategy: str) -> str:
         ),
     }
 
-    return f"""You are writing a LinkedIn post for Stuart Levenberg — a franchise M&A advisor and resale specialist with 20+ years of experience and 100+ franchise transactions closed.
+    return f"""You are writing a LinkedIn post for Stuart Levenberg — a franchise resale broker and M&A advisor with 20+ years of experience and 100+ transactions closed.
 
-Stuart's audience: franchise owners with 1-20 units who may be considering selling in the next 1-5 years.
+Stuart's audience: everyday franchise owners with 1-20 units in service, fitness, children's, home services, pet, automotive, cleaning, and similar non-food categories. These are owner-operators thinking about their future exit — not Wall Street dealmakers.
 
-Stuart's goal: become the most-followed source for franchise transactions, valuations, acquisitions, and private equity activity. Every post should attract franchise owners thinking about their exit.
+Stuart's goal: be the trusted advisor these owners turn to when they start thinking about selling. Every post should feel like advice from someone who has sat across the table from buyers and sellers hundreds of times.
+
+IMPORTANT TONE GUIDANCE:
+- Write for a franchise owner who runs a home services, fitness, or service business — not a restaurant chain operator
+- Ground insights in what this means for the small operator, not billion-dollar PE deals
+- Be direct and practical. These owners are busy. Get to the point.
+- Never write from a Wall Street perspective. Write from Main Street.
 
 ---
 
@@ -57,34 +63,31 @@ HOOK TYPE FOR THIS VARIANT: {hook_instructions[hook_type]}
 
 POST STRUCTURE (follow exactly):
 
-1. HOOK (1 line — the financial or contrarian opener)
+1. HOOK (1 punchy line — make a franchise owner stop scrolling)
 
-2. CONTEXT (2-4 micro-paragraphs — summarize the story with focus on: transaction size, unit count, growth rate, EBITDA, industry trend. One or two sentences per paragraph. Heavy white space.)
+2. CONTEXT (2-3 micro-paragraphs — what happened, what it means. Focus on: unit count, owner economics, trend, valuation impact. One or two sentences max per paragraph.)
 
-3. ANALYSIS (pattern recognition — why buyers are interested, what PE sees, why franchisees should care, what this means for valuations)
+3. ANALYSIS (what this means for the 1-20 unit owner specifically — connect the story to their world)
 
-4. MY TAKE (Stuart's broker perspective — 2-3 short paragraphs starting with "As someone who works with franchise buyers and sellers every day..." — add real insight only a broker would have)
+4. MY TAKE (2-3 short paragraphs starting with "As someone who works with franchise buyers and sellers every day..." — give insight only a broker who has closed 100+ deals would know)
 
-5. THREE THINGS TO WATCH (always exactly three bullet points)
+5. THREE THINGS TO WATCH (exactly three bullet points relevant to small franchise owners)
 
-6. CTA (one of the following — pick the most relevant to this article's topic):
+6. CTA (pick the most relevant):
    - "Curious what your franchise is worth today? Send me a message."
    - "If you own a franchise and have ever thought about an exit — even 3-5 years out — now is the time to understand your number. DM me."
    - "I work with franchise owners thinking about a future exit. If this story resonates, let's talk."
-   - "Want to know how deals like this impact your franchise valuation? Send me a note."
+   - "Want to know how this trend impacts your franchise valuation? Send me a note."
 
 ---
 
 STYLE RULES:
 - No fluff. No motivational language. No guru phrases.
-- Data-driven, analytical, operator-focused.
-- Never use em-dashes. Use a regular hyphen or restructure the sentence instead.
-- Max 2 sentences per paragraph. Aggressive white space.
-- Use franchise vocabulary: unit economics, royalty stream, EBITDA, acquisition multiple, enterprise value, platform acquisition, roll-up, consolidation, same-store sales, SBA financeability.
-- Total length: 180-250 words for standard posts, up to 400 for complex M&A stories.
-- Do NOT use hashtags.
-- Do NOT use emojis.
-- Do NOT start with "I" — start with the hook.
+- Never use em-dashes. Use a regular hyphen or rewrite the sentence.
+- Max 2 sentences per paragraph. Heavy white space.
+- Vocabulary: unit economics, SBA financing, seller's discretionary earnings, acquisition multiple, transferability, recast earnings, same-store sales, franchisee profitability.
+- Length: 180-250 words standard, up to 350 for complex topics.
+- No hashtags. No emojis. Do not start with "I".
 
 Write ONLY the post text. No preamble, no explanation, no title.
 """

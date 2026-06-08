@@ -51,35 +51,45 @@
   "scoring": {
     "highest_priority": {
       "keywords": [
-        "acquisition", "acquired", "acquires", "merger", "merges",
-        "private equity", "PE firm", "investment firm", "buyout",
-        "exit", "sold", "sells franchise", "franchise sale",
-        "consolidation", "consolidates", "roll-up", "rollup",
-        "IPO", "recapitalization", "recap", "platform acquisition",
-        "KKR", "Blackstone", "Roark", "Warburg", "Franchise Group",
-        "8 figures", "7 figures", "million", "billion",
-        "EBITDA", "multiple", "valuation"
+        "franchise resale", "franchise sale", "franchise sold", "franchise transfer",
+        "exit", "succession", "valuation", "EBITDA", "multiple",
+        "SBA", "SBA loan", "SBA financing",
+        "semi-absentee", "owner-operator", "franchisee sells",
+        "multi-unit", "multi unit", "area developer",
+        "unit economics", "AUV", "average unit volume",
+        "home services", "fitness", "health", "wellness",
+        "children", "kids", "education", "tutoring", "learning",
+        "senior care", "pet", "automotive", "cleaning", "restoration",
+        "staffing", "B2B", "service franchise"
       ],
       "score": 10
     },
     "medium_priority": {
       "keywords": [
-        "multi-unit", "multi unit", "area developer", "franchisee",
-        "unit economics", "Item 19", "FDD", "franchise disclosure",
-        "same-store sales", "AUV", "average unit volume",
-        "expansion", "growth", "new markets", "development agreement",
-        "SBA", "financing", "lending", "loan",
-        "profitability", "revenue", "royalty"
+        "franchisee", "franchise owner", "Item 19", "FDD", "franchise disclosure",
+        "same-store sales", "expansion", "growth", "development agreement",
+        "profitability", "revenue", "royalty", "recurring revenue",
+        "emerging brand", "new concept", "growing franchise"
       ],
       "score": 5
     },
     "lower_priority": {
       "keywords": [
-        "new location", "grand opening", "menu launch", "rebrand",
+        "new location", "grand opening", "rebrand",
         "award", "recognition", "charity", "community",
         "hiring", "new hire", "executive"
       ],
       "score": 2
+    },
+    "deprioritize": {
+      "keywords": [
+        "KKR", "Blackstone", "Roark", "Warburg", "Apollo", "Carlyle",
+        "private equity", "PE firm", "buyout firm",
+        "IPO", "billion", "roll-up", "platform acquisition",
+        "McDonald", "Subway", "Burger King", "Wendy", "Taco Bell",
+        "Domino", "Pizza Hut", "Starbucks", "Dunkin"
+      ],
+      "score": -8
     }
   }
 }

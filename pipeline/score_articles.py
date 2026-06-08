@@ -26,13 +26,13 @@ def score_article(article: dict, scoring: dict) -> int:
     # Apply source priority boost
     score *= article.get("priority_boost", 1)
 
-    # Boost for dollar amounts in title (strong signal)
-    if re.search(r'\$[\d,]+\s*(m|b|million|billion)?', article["title"], re.I):
-        score += 15
-
-    # Boost for unit counts in title
+    # Boost for unit counts in title (small franchise signal)
     if re.search(r'\d+[\s-]unit', article["title"], re.I):
         score += 10
+
+    # Penalize billion-dollar mega deals - not our audience
+    if re.search(r'\$[\d,]+\s*b(illion)?', article["title"], re.I):
+        score -= 20
 
     return score
 

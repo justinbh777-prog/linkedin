@@ -39,14 +39,21 @@ Lead with a shift happening right now.
 
 ## Topic Priority (Current)
 
-1. PE acquisitions and franchise roll-ups
-2. Franchise exits and resales — transaction details
-3. Multi-unit operator economics
-4. Franchise valuation drivers
-5. SBA financing and deal structure
-6. Emerging franchise categories
-7. Franchisee profitability and unit economics
-8. FDD insights and franchisor economics
+1. Franchise resales, exits, and valuations — any size deal
+2. SBA financing trends affecting franchise buyers
+3. Home services, fitness, children's, pet, automotive franchise stories
+4. Multi-unit owner economics and profitability
+5. FDD insights and what they reveal about unit-level returns
+6. Emerging non-food service franchise concepts
+7. Franchisee succession and exit planning
+8. Buyer demand trends for small-to-mid franchise businesses
+
+## Topics to Avoid
+
+- Mega PE buyouts (KKR, Blackstone, Roark etc.)
+- QSR giants (McDonald's, Subway, Taco Bell, Starbucks)
+- Billion-dollar transactions not relevant to 1-20 unit owners
+- Generic corporate franchise news with no owner angle
 
 ## Category Performance (Updated Weekly)
 
